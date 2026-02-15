@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zenoda.ztrader.admin.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="org.zenoda.ztrader.admin.domain.User">
+        <id column="ID" jdbcType="BIGINT" property="id"/>
+        <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="NICKNAME" jdbcType="VARCHAR" property="nickname"/>
+        <result column="AVATAR_URL" jdbcType="VARCHAR" property="avatarUrl"/>
+        <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
+        <result column="PHONE" jdbcType="VARCHAR" property="phone"/>
+        <result column="EMAIL_VERIFIED" jdbcType="BOOLEAN" property="emailVerified"/>
+        <result column="PHONE_VERIFIED" jdbcType="BOOLEAN" property="phoneVerified"/>
+        <result column="IS_ROOT" jdbcType="BOOLEAN" property="isRoot"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="LAST_LOGIN_AT" jdbcType="BIGINT" property="lastLoginAt"/>
+        <result column="CREATED_AT" jdbcType="BIGINT" property="createdAt"/>
+        <result column="CREATED_BY" jdbcType="BIGINT" property="createdBy"/>
+        <result column="UPDATED_AT" jdbcType="BIGINT" property="updatedAt"/>
+        <result column="UPDATED_BY" jdbcType="BIGINT" property="updatedBy"/>
+        <result column="DATA_VERSION" jdbcType="INTEGER" property="dataVersion"/>
+    </resultMap>
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete
+        from ADM_USER
+        where ID = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="org.zenoda.ztrader.admin.domain.User">
+        insert into ADM_USER (ID, USERNAME, PASSWORD,
+                              NICKNAME, AVATAR_URL, EMAIL,
+                              PHONE, EMAIL_VERIFIED, PHONE_VERIFIED,
+                              IS_ROOT, STATUS, LAST_LOGIN_AT,
+                              CREATED_AT, CREATED_BY, UPDATED_AT,
+                              UPDATED_BY, DATA_VERSION)
+        values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{nickname,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+                #{phone,jdbcType=VARCHAR}, #{emailVerified,jdbcType=BOOLEAN}, #{phoneVerified,jdbcType=BOOLEAN},
+                #{isRoot,jdbcType=BOOLEAN}, #{status,jdbcType=VARCHAR}, #{lastLoginAt,jdbcType=BIGINT},
+                #{createdAt,jdbcType=BIGINT}, #{createdBy,jdbcType=BIGINT}, #{updatedAt,jdbcType=BIGINT},
+                #{updatedBy,jdbcType=BIGINT}, #{dataVersion,jdbcType=INTEGER})
+    </insert>
+    <update id="updateById" parameterType="org.zenoda.ztrader.admin.domain.User">
+        update ADM_USER
+        set USERNAME       = #{username,jdbcType=VARCHAR},
+            PASSWORD       = #{password,jdbcType=VARCHAR},
+            NICKNAME       = #{nickname,jdbcType=VARCHAR},
+            AVATAR_URL     = #{avatarUrl,jdbcType=VARCHAR},
+            EMAIL          = #{email,jdbcType=VARCHAR},
+            PHONE          = #{phone,jdbcType=VARCHAR},
+            EMAIL_VERIFIED = #{emailVerified,jdbcType=BOOLEAN},
+            PHONE_VERIFIED = #{phoneVerified,jdbcType=BOOLEAN},
+            IS_ROOT        = #{isRoot,jdbcType=BOOLEAN},
+            STATUS         = #{status,jdbcType=VARCHAR},
+            LAST_LOGIN_AT  = #{lastLoginAt,jdbcType=BIGINT},
+            CREATED_AT     = #{createdAt,jdbcType=BIGINT},
+            CREATED_BY     = #{createdBy,jdbcType=BIGINT},
+            UPDATED_AT     = #{updatedAt,jdbcType=BIGINT},
+            UPDATED_BY     = #{updatedBy,jdbcType=BIGINT},
+            DATA_VERSION   = #{dataVersion,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
+          and DATA_VERSION = #{dataVersion,jdbcType=INTEGER} - 1
+    </update>
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select ID,
+               USERNAME,
+               PASSWORD,
+               NICKNAME,
+               AVATAR_URL,
+               EMAIL,
+               PHONE,
+               EMAIL_VERIFIED,
+               PHONE_VERIFIED,
+               IS_ROOT,
+               STATUS,
+               LAST_LOGIN_AT,
+               CREATED_AT,
+               CREATED_BY,
+               UPDATED_AT,
+               UPDATED_BY,
+               DATA_VERSION
+        from ADM_USER
+        where ID = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        select ID,
+               USERNAME,
+               PASSWORD,
+               NICKNAME,
+               AVATAR_URL,
+               EMAIL,
+               PHONE,
+               EMAIL_VERIFIED,
+               PHONE_VERIFIED,
+               IS_ROOT,
+               STATUS,
+               LAST_LOGIN_AT,
+               CREATED_AT,
+               CREATED_BY,
+               UPDATED_AT,
+               UPDATED_BY,
+               DATA_VERSION
+        from ADM_USER
+        where USERNAME = #{username,jdbcType=VARCHAR}
+    </select>
+</mapper>
