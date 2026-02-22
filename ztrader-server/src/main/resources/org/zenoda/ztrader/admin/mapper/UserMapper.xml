@@ -41,24 +41,26 @@
     </insert>
     <update id="updateById" parameterType="org.zenoda.ztrader.admin.domain.User">
         update ADM_USER
-        set USERNAME       = #{username,jdbcType=VARCHAR},
-            PASSWORD       = #{password,jdbcType=VARCHAR},
-            NICKNAME       = #{nickname,jdbcType=VARCHAR},
-            AVATAR_URL     = #{avatarUrl,jdbcType=VARCHAR},
-            EMAIL          = #{email,jdbcType=VARCHAR},
-            PHONE          = #{phone,jdbcType=VARCHAR},
-            EMAIL_VERIFIED = #{emailVerified,jdbcType=BOOLEAN},
-            PHONE_VERIFIED = #{phoneVerified,jdbcType=BOOLEAN},
-            IS_ROOT        = #{isRoot,jdbcType=BOOLEAN},
-            STATUS         = #{status,jdbcType=VARCHAR},
-            LAST_LOGIN_AT  = #{lastLoginAt,jdbcType=BIGINT},
-            CREATED_AT     = #{createdAt,jdbcType=BIGINT},
-            CREATED_BY     = #{createdBy,jdbcType=BIGINT},
-            UPDATED_AT     = #{updatedAt,jdbcType=BIGINT},
-            UPDATED_BY     = #{updatedBy,jdbcType=BIGINT},
-            DATA_VERSION   = #{dataVersion,jdbcType=INTEGER}
+        set USERNAME = #{username,jdbcType=VARCHAR},
+        <if test="password!=null">
+            PASSWORD = #{password,jdbcType=VARCHAR},
+        </if>
+        NICKNAME = #{nickname,jdbcType=VARCHAR},
+        AVATAR_URL = #{avatarUrl,jdbcType=VARCHAR},
+        EMAIL = #{email,jdbcType=VARCHAR},
+        PHONE = #{phone,jdbcType=VARCHAR},
+        EMAIL_VERIFIED = #{emailVerified,jdbcType=BOOLEAN},
+        PHONE_VERIFIED = #{phoneVerified,jdbcType=BOOLEAN},
+        IS_ROOT = #{isRoot,jdbcType=BOOLEAN},
+        STATUS = #{status,jdbcType=VARCHAR},
+        LAST_LOGIN_AT = #{lastLoginAt,jdbcType=BIGINT},
+        CREATED_AT = #{createdAt,jdbcType=BIGINT},
+        CREATED_BY = #{createdBy,jdbcType=BIGINT},
+        UPDATED_AT = #{updatedAt,jdbcType=BIGINT},
+        UPDATED_BY = #{updatedBy,jdbcType=BIGINT},
+        DATA_VERSION = #{dataVersion,jdbcType=INTEGER}
         where ID = #{id,jdbcType=BIGINT}
-          and DATA_VERSION = #{dataVersion,jdbcType=INTEGER} - 1
+        and DATA_VERSION = #{dataVersion,jdbcType=INTEGER} - 1
     </update>
     <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select ID,

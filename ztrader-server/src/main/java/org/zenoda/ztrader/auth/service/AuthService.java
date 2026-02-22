@@ -3,6 +3,7 @@ package org.zenoda.ztrader.auth.service;
 import org.springframework.stereotype.Service;
 import org.zenoda.ztrader.admin.domain.User;
 import org.zenoda.ztrader.admin.service.UserService;
+import org.zenoda.ztrader.auth.domain.AuthStatus;
 import org.zenoda.ztrader.auth.domain.Credential;
 import org.zenoda.ztrader.auth.domain.SessionInfo;
 import org.zenoda.ztrader.auth.web.SessionContext;
@@ -44,5 +45,19 @@ public class AuthService {
         sessionInfo.setUsername(sessionContext.getUsername());
         sessionInfo.setUserId(sessionContext.getUserId());
         return sessionInfo;
+    }
+
+    public AuthStatus getAuthStatus() {
+        AuthStatus authStatus = new AuthStatus();
+        if (sessionContext.getUserId() != null) {
+            authStatus.setLoggedIn(true);
+        } else {
+            authStatus.setLoggedIn(false);
+        }
+        return authStatus;
+    }
+
+    public void logout() {
+        sessionContext.invalidate();
     }
 }

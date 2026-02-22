@@ -21,7 +21,7 @@ public class AuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         sessionContext.setSession(request.getSession(true));
-        if (!request.getRequestURI().matches("/auth/login|/auth/logout|/swagger-ui.*|/v3/api-docs.*") && sessionContext.getUserId() == null) {
+        if (!request.getRequestURI().matches("/api/auth/login|/api/auth/logout|/api/auth/status|/api/swagger-ui.*|/api/v3/api-docs.*") && sessionContext.getUserId() == null) {
             //未登录
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }

@@ -1,9 +1,7 @@
 package org.zenoda.ztrader.auth.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.zenoda.ztrader.auth.domain.AuthStatus;
 import org.zenoda.ztrader.auth.domain.Credential;
 import org.zenoda.ztrader.auth.domain.SessionInfo;
 import org.zenoda.ztrader.auth.service.AuthService;
@@ -20,5 +18,15 @@ public class AuthController {
     @PostMapping(value = "/login")
     public SessionInfo login(@RequestBody Credential credential) {
         return authService.login(credential);
+    }
+
+    @PostMapping(value = "/logout")
+    public void logout() {
+        authService.logout();
+    }
+
+    @GetMapping(value = "/status")
+    public AuthStatus getAuthStatus() {
+        return authService.getAuthStatus();
     }
 }

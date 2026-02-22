@@ -33,4 +33,9 @@ public class SessionContext {
         return (String) sessionThreadLocal.get().getAttribute(USERNAME);
     }
 
+    public void invalidate() {
+        sessionThreadLocal.get().invalidate();
+        sessionThreadLocal.remove();
+    }
+
 }
