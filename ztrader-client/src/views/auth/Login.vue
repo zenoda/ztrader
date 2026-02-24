@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from "vue";
-import visibleIcon from "@/assets/visible.svg"
-import invisibleIcon from "@/assets/invisible.svg"
+import visibleIcon from "@/assets/icons/visible.svg"
+import invisibleIcon from "@/assets/icons/invisible.svg"
 import {login} from "@/lib/auth/AuthClient.js";
 import router from "@/router/index.js";
 import ZPassword from "@/components/ZPassword.vue";
@@ -19,7 +19,7 @@ async function onLoginButtonClick() {
   <el-container class="z-trader-login">
     <el-header>
       <div class="left-bar">
-        <img class="z-trader-logo" src="@/assets/logo.webp" alt="logo"/>
+        <img class="z-trader-logo" src="../../assets/images/logo.webp" alt="logo"/>
         <h2>ZTrader</h2>
       </div>
       <div class="right-bar"></div>
@@ -35,7 +35,7 @@ async function onLoginButtonClick() {
               <el-form-item>
                 <el-input size="large" placeholder="请输入用户名" v-model="credential.username">
                   <template v-slot:prefix>
-                    <img width="24" src="@/assets/user.svg">
+                    <img width="24" src="../../assets/icons/user.svg">
                   </template>
                 </el-input>
               </el-form-item>

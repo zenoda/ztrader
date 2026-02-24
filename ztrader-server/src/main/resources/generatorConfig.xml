@@ -15,12 +15,18 @@
                         userId="sa"
                         password=""/>
 
-        <javaModelGenerator targetPackage="org.zenoda.ztrader.admin.domain" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="org.zenoda.ztrader.admin.mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator targetPackage="org.zenoda.ztrader.admin.mapper" targetProject="src/main/java"
+        <javaModelGenerator targetPackage="org.zenoda.ztrader.data.domain" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="org.zenoda.ztrader.data.mapper" targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="org.zenoda.ztrader.data.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="adm_user" mapperName="UserMapper" domainObjectName="User"
+        <table tableName="zt_data_category" mapperName="DataCategoryMapper" domainObjectName="DataCategory"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="zt_company" mapperName="CompanyMapper" domainObjectName="Company"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="zt_trade" mapperName="TradeMapper" domainObjectName="Trade"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>

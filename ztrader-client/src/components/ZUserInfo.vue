@@ -33,11 +33,11 @@ onMounted(async () => {
       </template>
       <div class="z-user-info__controller">
         <div class="controller-btn" @click="onUserProfileButtonClick">
-          <img src="../assets/profile.svg">
+          <img src="../assets/icons/profile.svg">
           <span>个人资料</span>
         </div>
         <div class="controller-btn" @click="onLogoutButtonClick">
-          <img src="../assets/exit.svg">
+          <img src="../assets/icons/exit.svg">
           <span>退出</span>
         </div>
       </div>

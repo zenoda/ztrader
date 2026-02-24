@@ -1,7 +1,7 @@
 <script setup>
 import {computed, ref} from "vue";
-import visibleIcon from "@/assets/visible.svg";
-import invisibleIcon from "@/assets/invisible.svg";
+import visibleIcon from "@/assets/icons/visible.svg";
+import invisibleIcon from "@/assets/icons/invisible.svg";
 
 const {size, placeholder} = defineProps({
   size: {type: String, default: 'default'},
@@ -20,7 +20,7 @@ const iconSize = ref({
   <el-input class="z-trader-password" :size="size" :type="passwordVisible?'text':'password'" :placeholder="placeholder"
             v-model="password">
     <template v-slot:prefix>
-      <img :width="iconSize[size]" src="@/assets/lock.svg"/>
+      <img :width="iconSize[size]" src="../assets/icons/lock.svg"/>
     </template>
     <template v-slot:suffix>
       <img :width="iconSize[size]" :src="passwordVisible ? visibleIcon : invisibleIcon" style="cursor: pointer"

@@ -1,0 +1,57 @@
+.flex {
+    display: flex;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.direction-vertical {
+    flex-direction: column;
+}
+
+.direction-horizontal {
+    flex-direction: row;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.large-border-radius {
+    border-radius: 14px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    font-size: var(--el-font-size-base);
+    color: var(--el-text-color-primary);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--el-text-color-primary);
+}

@@ -1,7 +1,7 @@
 <script setup>
 
-import DashboardIcon from "@/assets/dashboard.svg";
-import DataIcon from "@/assets/data.svg";
+import DashboardIcon from "@/assets/icons/dashboard.svg";
+import DataIcon from "@/assets/icons/data.svg";
 import {ArrowRight} from "@element-plus/icons-vue";
 import ZMenuItem from "@/components/ZMenuItem.vue";
 import ZUserInfo from "@/components/ZUserInfo.vue";
@@ -19,29 +19,29 @@ watch(() => route.fullPath, updateBreadcrumbs, {immediate: true})
 </script>
 
 <template>
-  <el-container class="ztrader-platform">
-    <el-aside width="255px" class="ztrader-aside">
-      <el-header class="ztrader-aside-header">
-        <img class="ztrader-logo" src="@/assets/logo.webp" alt="logo"/>
+  <el-container class="z-trader-platform">
+    <el-aside width="255px" class="z-trader-aside">
+      <el-header class="z-trader-aside-header">
+        <img class="z-trader-logo" src="../../assets/images/logo.webp" alt="logo"/>
         <h2>ZTrader</h2>
       </el-header>
-      <el-main class="ztrader-aside-main">
+      <el-main class="z-trader-aside-main">
         <z-menu-item :icon="DashboardIcon" text="工作台" :selected="route.name==='dashboard'" route="/#/dashboard"/>
         <z-menu-item :icon="DataIcon" text="数据管理" :selected="route.name==='data'" route="/#/data"/>
         <z-menu-item :icon="DataIcon" text="指标管理" :selected="route.name==='indicators'" route="/#/indicators"/>
       </el-main>
-      <el-footer class="ztrader-aside-footer">
+      <el-footer class="z-trader-aside-footer">
         <z-user-info/>
       </el-footer>
     </el-aside>
     <el-container class="ztrader-body">
       <el-header class="ztrader-header">
-        <img class="home-icon" src="@/assets/home.svg" alt="home">
+        <img class="home-icon" src="../../assets/icons/home.svg" alt="home">
         <el-breadcrumb :separator-icon="ArrowRight">
           <el-breadcrumb-item v-for="item in breadcrumbs">{{ item.meta.title }}</el-breadcrumb-item>
         </el-breadcrumb>
       </el-header>
-      <el-main class="ztrader-main">
+      <el-main class="z-trader-main">
         <router-view/>
       </el-main>
     </el-container>
@@ -49,15 +49,15 @@ watch(() => route.fullPath, updateBreadcrumbs, {immediate: true})
 </template>
 
 <style lang="scss">
-.ztrader-platform {
+.z-trader-platform {
   height: 100%;
 
-  .ztrader-aside {
+  .z-trader-aside {
     border-right: 1px solid var(--el-border-color);
     display: flex;
     flex-direction: column;
 
-    .ztrader-aside-header {
+    .z-trader-aside-header {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -65,12 +65,12 @@ watch(() => route.fullPath, updateBreadcrumbs, {immediate: true})
       height: 120px;
       border-bottom: 1px solid var(--el-border-color);
 
-      .ztrader-logo {
+      .z-trader-logo {
         width: 48px;
       }
     }
 
-    .ztrader-aside-main {
+    .z-trader-aside-main {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -81,7 +81,7 @@ watch(() => route.fullPath, updateBreadcrumbs, {immediate: true})
       }
     }
 
-    .ztrader-aside-footer {
+    .z-trader-aside-footer {
       border-top: 1px solid var(--el-border-color);
       display: flex;
 
@@ -102,8 +102,9 @@ watch(() => route.fullPath, updateBreadcrumbs, {immediate: true})
     }
   }
 
-  .ztrader-main {
+  .z-trader-main {
     background-color: rgba(0, 0, 0, 0.015);
+    padding: 0;
   }
 }
 </style>

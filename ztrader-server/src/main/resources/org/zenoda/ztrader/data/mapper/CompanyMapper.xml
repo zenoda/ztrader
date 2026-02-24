@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zenoda.ztrader.data.mapper.CompanyMapper">
+    <resultMap id="BaseResultMap" type="org.zenoda.ztrader.data.domain.Company">
+        <id column="ID" jdbcType="BIGINT" property="id"/>
+        <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName"/>
+        <result column="MARKET" jdbcType="INTEGER" property="market"/>
+        <result column="PE" jdbcType="BIGINT" property="pe"/>
+        <result column="PB" jdbcType="BIGINT" property="pb"/>
+        <result column="TOTAL_CAP" jdbcType="BIGINT" property="totalCap"/>
+        <result column="FLOATING_CAP" jdbcType="BIGINT" property="floatingCap"/>
+        <result column="CREATED_AT" jdbcType="BIGINT" property="createdAt"/>
+        <result column="CREATED_BY" jdbcType="BIGINT" property="createdBy"/>
+        <result column="UPDATED_AT" jdbcType="BIGINT" property="updatedAt"/>
+        <result column="UPDATED_BY" jdbcType="BIGINT" property="updatedBy"/>
+        <result column="DATA_VERSION" jdbcType="INTEGER" property="dataVersion"/>
+    </resultMap>
+    <delete id="deleteById" parameterType="java.lang.String">
+        delete
+        from ZT_COMPANY
+        where ID = #{id,jdbcType=VARCHAR}
+          and DATA_VERSION = #{dataVersion,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="org.zenoda.ztrader.data.domain.Company">
+        insert into ZT_COMPANY (ID, COMPANY_CODE, COMPANY_NAME, MARKET, PE, PB, TOTAL_CAP, FLOATING_CAP, CREATED_BY,
+                                CREATED_AT, UPDATED_BY, UPDATED_AT, DATA_VERSION)
+        values (#{id,jdbcType=BIGINT}, #{companyCode,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR},
+                #{market,jdbcType=INTEGER}, #{pe,jdbcType=BIGINT}, #{pb,jdbcType=BIGINT}, #{totalCap,jdbcType=BIGINT},
+                #{floatingCap,jdbcType=BIGINT}, #{createdBy,jdbcType=BIGINT}, #{createdAt,jdbcType=BIGINT},
+                #{updatedBy,jdbcType=BIGINT}, #{updatedAt,jdbcType=BIGINT}, #{dataVersion,jdbcType=BIGINT})
+    </insert>
+    <update id="updateById" parameterType="org.zenoda.ztrader.data.domain.Company">
+        update ZT_COMPANY
+        set COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+            COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+            MARKET       = #{market,jdbcType=INTEGER},
+            PE           = #{pe,jdbcType=BIGINT},
+            PB           = #{pb,jdbcType=BIGINT},
+            TOTAL_CAP    = #{totalCap,jdbcType=BIGINT},
+            FLOATING_CAP = #{floatingCap,jdbcType=BIGINT}
+        where ID = #{id,jdbcType=BIGINT}
+          AND DATA_VERSION = #{dataVersion,jdbcType=INTEGER}
+    </update>
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select ID,
+               COMPANY_CODE,
+               COMPANY_NAME,
+               MARKET,
+               PE,
+               PB,
+               TOTAL_CAP,
+               FLOATING_CAP,
+               CREATED_BY,
+               CREATED_AT,
+               UPDATED_BY,
+               UPDATED_AT,
+               DATA_VERSION
+        from ZT_COMPANY
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+</mapper>

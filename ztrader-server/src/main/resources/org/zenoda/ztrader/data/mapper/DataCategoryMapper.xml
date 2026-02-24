@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zenoda.ztrader.data.mapper.DataCategoryMapper">
+  <resultMap id="BaseResultMap" type="org.zenoda.ztrader.data.domain.DataCategory">
+    <id column="DATA_CATEGORY_CODE" jdbcType="VARCHAR" property="dataCategoryCode" />
+    <result column="DATA_CATEGORY_NAME" jdbcType="VARCHAR" property="dataCategoryName" />
+    <result column="DATA_ROWS" jdbcType="BIGINT" property="dataRows" />
+    <result column="DATA_UPDATED_AT" jdbcType="BIGINT" property="dataUpdatedAt" />
+    <result column="DATA_UPDATED_BY" jdbcType="BIGINT" property="dataUpdatedBy" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ZT_DATA_CATEGORY
+    where DATA_CATEGORY_CODE = #{dataCategoryCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.zenoda.ztrader.data.domain.DataCategory">
+    insert into ZT_DATA_CATEGORY (DATA_CATEGORY_CODE, DATA_CATEGORY_NAME, 
+      DATA_ROWS, DATA_UPDATED_AT, DATA_UPDATED_BY
+      )
+    values (#{dataCategoryCode,jdbcType=VARCHAR}, #{dataCategoryName,jdbcType=VARCHAR}, 
+      #{dataRows,jdbcType=BIGINT}, #{dataUpdatedAt,jdbcType=BIGINT}, #{dataUpdatedBy,jdbcType=BIGINT}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.zenoda.ztrader.data.domain.DataCategory">
+    update ZT_DATA_CATEGORY
+    set DATA_CATEGORY_NAME = #{dataCategoryName,jdbcType=VARCHAR},
+      DATA_ROWS = #{dataRows,jdbcType=BIGINT},
+      DATA_UPDATED_AT = #{dataUpdatedAt,jdbcType=BIGINT},
+      DATA_UPDATED_BY = #{dataUpdatedBy,jdbcType=BIGINT}
+    where DATA_CATEGORY_CODE = #{dataCategoryCode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select DATA_CATEGORY_CODE, DATA_CATEGORY_NAME, DATA_ROWS, DATA_UPDATED_AT, DATA_UPDATED_BY
+    from ZT_DATA_CATEGORY
+    where DATA_CATEGORY_CODE = #{dataCategoryCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select DATA_CATEGORY_CODE, DATA_CATEGORY_NAME, DATA_ROWS, DATA_UPDATED_AT, DATA_UPDATED_BY
+    from ZT_DATA_CATEGORY
+  </select>
+</mapper>

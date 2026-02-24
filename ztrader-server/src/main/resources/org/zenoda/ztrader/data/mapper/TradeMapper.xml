@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zenoda.ztrader.data.mapper.TradeMapper">
+  <resultMap id="BaseResultMap" type="org.zenoda.ztrader.data.domain.Trade">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode" />
+    <result column="TRADE_DATE" jdbcType="VARCHAR" property="tradeDate" />
+    <result column="OPEN" jdbcType="BIGINT" property="open" />
+    <result column="CLOSE" jdbcType="BIGINT" property="close" />
+    <result column="HIGH" jdbcType="BIGINT" property="high" />
+    <result column="LOW" jdbcType="BIGINT" property="low" />
+    <result column="VOL" jdbcType="BIGINT" property="vol" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ZT_TRADE
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.zenoda.ztrader.data.domain.Trade">
+    insert into ZT_TRADE (ID, COMPANY_CODE, TRADE_DATE, 
+      OPEN, CLOSE, HIGH, LOW, 
+      VOL)
+    values (#{id,jdbcType=BIGINT}, #{companyCode,jdbcType=VARCHAR}, #{tradeDate,jdbcType=VARCHAR}, 
+      #{open,jdbcType=BIGINT}, #{close,jdbcType=BIGINT}, #{high,jdbcType=BIGINT}, #{low,jdbcType=BIGINT}, 
+      #{vol,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.zenoda.ztrader.data.domain.Trade">
+    update ZT_TRADE
+    set COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      TRADE_DATE = #{tradeDate,jdbcType=VARCHAR},
+      OPEN = #{open,jdbcType=BIGINT},
+      CLOSE = #{close,jdbcType=BIGINT},
+      HIGH = #{high,jdbcType=BIGINT},
+      LOW = #{low,jdbcType=BIGINT},
+      VOL = #{vol,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, TRADE_DATE, OPEN, CLOSE, HIGH, LOW, VOL
+    from ZT_TRADE
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, TRADE_DATE, OPEN, CLOSE, HIGH, LOW, VOL
+    from ZT_TRADE
+  </select>
+</mapper>
