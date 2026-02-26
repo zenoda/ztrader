@@ -3,73 +3,67 @@ package org.zenoda.ztrader.data.domain;
 import org.zenoda.ztrader.common.DefaultMutableEntity;
 
 public class Company extends DefaultMutableEntity {
-    private String companyCode;
+    private String code;
+    private String name;
+    private String area;
+    private String industry;
+    private String cnSpell;
+    private String market;
+    private String listDate;
 
-    private String companyName;
-
-    private Integer market;
-
-    private Long pe;
-
-    private Long pb;
-
-    private Long totalCap;
-
-    private Long floatingCap;
-
-    public String getCompanyCode() {
-        return companyCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setCompanyCode(String companyCode) {
-        this.companyCode = companyCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getMarket() {
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public String getCnSpell() {
+        return cnSpell;
+    }
+
+    public void setCnSpell(String cnSpell) {
+        this.cnSpell = cnSpell;
+    }
+
+    public String getMarket() {
         return market;
     }
 
-    public void setMarket(Integer market) {
+    public void setMarket(String market) {
         this.market = market;
     }
 
-    public Long getPe() {
-        return pe;
+    public String getListDate() {
+        return listDate;
     }
 
-    public void setPe(Long pe) {
-        this.pe = pe;
-    }
-
-    public Long getPb() {
-        return pb;
-    }
-
-    public void setPb(Long pb) {
-        this.pb = pb;
-    }
-
-    public Long getTotalCap() {
-        return totalCap;
-    }
-
-    public void setTotalCap(Long totalCap) {
-        this.totalCap = totalCap;
-    }
-
-    public Long getFloatingCap() {
-        return floatingCap;
-    }
-
-    public void setFloatingCap(Long floatingCap) {
-        this.floatingCap = floatingCap;
+    public void setListDate(String listDate) {
+        this.listDate = listDate;
     }
 }

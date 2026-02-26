@@ -17,13 +17,13 @@ comment on table zt_data_category is '数据类别';
 create table zt_company
 (
     id           bigint primary key comment '公司ID',
-    company_code varchar(20) not null comment '公司代码',
-    company_name varchar(50) not null comment '公司名称',
-    market       int         not null comment '市场(0-沪市,1-深市)',
-    pe           bigint comment '市盈率',
-    pb           bigint comment '市净率',
-    total_cap    bigint comment '总市值',
-    floating_cap bigint comment '流通市值',
+    code         varchar(20)  not null comment '公司代码',
+    name         varchar(50)  not null comment '公司名称',
+    area         varchar(20)  not null comment '地域',
+    industry     varchar(30)  not null comment '所属行业',
+    cn_spell     varchar(100) not null comment '拼音缩写',
+    market       varchar(15)  not null comment '市场类型（主板/创业板/科创板/CDR）',
+    list_date    varchar(10)  not null comment '上市日期',
     created_by   bigint comment '创建人',
     created_at   bigint comment '创建时间',
     updated_by   bigint comment '修改人',
@@ -31,8 +31,7 @@ create table zt_company
     data_version int comment '数据版本'
 );
 comment on table zt_company is '上市公司';
-create unique index idx_zt_company_1 on zt_company (company_code);
-
+create unique index idx_zt_company_1 on zt_company (code);
 create table zt_trade
 (
     id           bigint primary key comment '交易ID',

@@ -13,6 +13,10 @@ public class SessionContext {
         sessionThreadLocal.set(session);
     }
 
+    public HttpSession getSession() {
+        return sessionThreadLocal.get();
+    }
+
     public String getSessionId() {
         return sessionThreadLocal.get().getId();
     }

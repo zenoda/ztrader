@@ -8,4 +8,5 @@ import org.zenoda.ztrader.data.domain.Company;
 
 @Mapper
 public interface CompanyMapper extends DefaultMapper<Company> {
+    int deleteAll();
 }

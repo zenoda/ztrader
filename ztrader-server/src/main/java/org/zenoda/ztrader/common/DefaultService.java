@@ -1,6 +1,7 @@
 package org.zenoda.ztrader.common;
 
 import cn.hutool.core.util.IdUtil;
+import org.springframework.transaction.annotation.Transactional;
 import org.zenoda.ztrader.auth.web.SessionContext;
 
 public class DefaultService<T extends DefaultEntity, M extends DefaultMapper<T>> {
@@ -20,6 +21,7 @@ public class DefaultService<T extends DefaultEntity, M extends DefaultMapper<T>>
         return repository;
     }
 
+    @Transactional
     public T save(T entity) {
         if (entity.getId() == null) {
             entity.setId(IdUtil.getSnowflakeNextId());
@@ -44,6 +46,7 @@ public class DefaultService<T extends DefaultEntity, M extends DefaultMapper<T>>
         return entity;
     }
 
+    @Transactional
     public Integer removeById(Long id, Integer dataVersion) {
         return repository.deleteById(id, dataVersion);
     }
